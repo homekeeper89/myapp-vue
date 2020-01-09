@@ -8,8 +8,8 @@
 <script lang="ts">
 import Vue from 'vue'
 import {Component} from 'vue-property-decorator';
-import sidebar from '@/views/SideBar.vue';
-import Header from '@/views/Header.vue';
+import sidebar from '@/components/SideBar.vue';
+import Header from '@/components/Header.vue';
 
 @Component({
   components:{
