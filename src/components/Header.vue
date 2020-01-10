@@ -10,12 +10,14 @@
         class="form-control"
         placeholder="username"
         aria-describedby="basic-addon1"
+        data-cy="header-input-name"
       />
       <input
         type="text"
         class="form-control"
         placeholder="title"
         aria-describedby="basic-addon1"
+        data-cy="header-input-title"
       />
     </div>
   </div>
