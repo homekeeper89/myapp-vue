@@ -8,7 +8,13 @@
       <input
         type="text"
         class="form-control"
-        placeholder="Username"
+        placeholder="username"
+        aria-describedby="basic-addon1"
+      />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="title"
         aria-describedby="basic-addon1"
       />
     </div>
