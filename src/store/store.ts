@@ -35,7 +35,7 @@ const store: StoreOptions<State> = {
       state.itemList[id].status = status;
     },
     removeItem(state, id: number) {
-      state.itemList.splice(id, 1);
+      state.itemList.splice(id-1, 1);
     }
   },
   actions: {
