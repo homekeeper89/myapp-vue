@@ -4,7 +4,7 @@
       <span class="input-group-addon">
         <input type="checkbox" aria-label="...">
       </span>
-      <input type="text" class="form-control" :value="title + name" id="id"/>
+      <input type="text" class="form-control" :value="item.title + item.name" id="item.id"/>
       <span class="input-group-btn">
         <button class="btn btn-default" type="button">X</button>
       </span>
@@ -18,9 +18,7 @@ import { Component } from "vue-property-decorator";
 
 @Component({
   props: {
-    id: Number,
-    title:String,
-    name:String
+    item:[]
   }
 })
 export default class Item extends Vue {
