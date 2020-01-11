@@ -1,11 +1,11 @@
 <template>
   <div class="body-main">
-    <Item v-for="item in items" :item="item" :key="item.id"></Item>
+    <Item v-for="item in watchedItemList" :item="item" :key="item.id"></Item>
   </div>
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import {Component} from 'vue-property-decorator';
+import {Component, Watch} from 'vue-property-decorator';
 import Item from '@/components/Item.vue'
 
 @Component({
@@ -30,8 +30,20 @@ export default class Body extends Vue{
       id:3,
       title:'Do something good for me',
       name:'this is my name',
-      status:'waiting',
+      status:'clear',
     }
   ]
+
+  watchedItemList:any[] = this.items;
+
+  @Watch("$route.params.status")
+  renderItemListByStatus(status:string|undefined){
+    if(!status){
+      this.watchedItemList = this.items;
+      return;
+    }
+    this.watchedItemList = this.items.filter((item)=>item.status == status)
+  }
+
 }
 </script>
