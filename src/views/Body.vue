@@ -1,6 +1,6 @@
 <template>
   <div class="body-main">
-    <Item></Item>
+    <Item :title="title" :name="name" :id="id"></Item>
   </div>
 </template>
 <script lang="ts">
@@ -14,6 +14,8 @@ import Item from '@/components/Item.vue'
   }
 })
 export default class Body extends Vue{
-  
+  id: Number=1
+  title:string="Make My Todo App :"
+  name:string="this name"
 }
 </script>
