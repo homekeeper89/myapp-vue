@@ -42,7 +42,7 @@ export default class Body extends Vue{
       this.watchedItemList = this.items;
       return;
     }
-    this.watchedItemList = this.items.filter((item)=>item.status == status)
+    this.watchedItemList = this.items.filter((item:any)=>item.status == status)
   }
 
 }
