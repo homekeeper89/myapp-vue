@@ -25,6 +25,12 @@ export default class Body extends Vue{
       title:'Make My Service',
       name:'this is my name',
       status:'active',
+    },
+    {
+      id:3,
+      title:'Do something good for me',
+      name:'this is my name',
+      status:'waiting',
     }
   ]
 }
