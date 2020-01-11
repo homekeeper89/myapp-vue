@@ -32,10 +32,10 @@ const store: StoreOptions<State> = {
       state.itemList.push(item);
     },
     changeItemStatus(state, { id, status }: { id: number, status: "active" | "clear" | "waiting" }) {
-      state.itemList[id].status = status;
+      state.itemList[id-1]['status'] = status;
     },
     removeItem(state, id: number) {
-      state.itemList.splice(id, 1);
+      state.itemList.splice(id-1, 1);
     }
   },
   actions: {
