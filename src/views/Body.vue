@@ -1,6 +1,6 @@
 <template>
   <div class="body-main">
-    <Item v-for="item in items" :item="item" v-bind:key="item.id"></Item>
+    <Item v-for="item in items" :item="item" :key="item.id"></Item>
   </div>
 </template>
 <script lang="ts">
@@ -17,12 +17,14 @@ export default class Body extends Vue{
   items:any[]=[{
       id:1,
       title:"Make My Todo App :",
-      name:"this name"
+      name:"this name",
+      status:'active',
     },
     {
       id:2,
       title:'Make My Service',
-      name:'this is my name'
+      name:'this is my name',
+      status:'active',
     }
   ]
 }
