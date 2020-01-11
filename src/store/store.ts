@@ -8,9 +8,28 @@ const store :StoreOptions<State> = {
   state:{ 
     itemList:[]
   },
-  mutations:{},
-  actions:{},
-  getters:{}
+  mutations:{
+    addItemToList(state:State, item:Item){
+      state.itemList.push(item);
+    },
+    changeItemStatus(state, {id, status}:{id:number, status:"active"|"clear"|"waiting"}){
+      state.itemList[id].status = status;
+    },
+    removeItem(state, id:number){
+      state.itemList.splice(id,1);
+    }
+  },
+  actions:{
+
+  },
+  getters:{
+    getAllItem(state){
+      return state.itemList;
+    },
+    getItemOnStatus(state, status:"active"|"clear"|"waiting"){
+      return state.itemList.filter((item)=>item.status === status);
+    }
+  }
 }
 
 export default new Vuex.Store(store)
