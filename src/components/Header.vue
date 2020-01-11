@@ -17,6 +17,9 @@
         <li role="presentation">
           <router-link to="/clear">clear</router-link>
         </li>
+        <li role="presentation">
+          <router-link to="/waiting">waiting</router-link>
+        </li>
       </ul>
     </div>
     <div class="input-group header-main__inputGroup">
