@@ -26,7 +26,8 @@ export default class Body extends Vue{
   watchedItemList:any[]=[]
 
   created(){
-    this.watchedItemList = this.allItems
+    this.$store.dispatch('initData');
+    this.watchedItemList = this.allItems;
   }
 
   @Watch("$route.params.status")

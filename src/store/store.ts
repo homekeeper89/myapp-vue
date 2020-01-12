@@ -1,31 +1,14 @@
 import Vue from 'vue';
 import Vuex, { StoreOptions } from 'vuex';
 import { State, Item } from '@/store/interface/item.inteface';
+import {AxiosResponse} from 'axios';
+import AxiosService from '@/service/axios.service'
 
 Vue.use(Vuex)
 
 const store: StoreOptions<State> = {
   state: {
-    itemList: [
-      {
-        id: 1,
-        title: "Make My Todo App :",
-        name: "this name",
-        status: 'active',
-      },
-      {
-        id: 2,
-        title: 'Make My Service',
-        name: 'this is my name',
-        status: 'active',
-      },
-      {
-        id: 3,
-        title: 'Do something good for me',
-        name: 'this is my name',
-        status: 'clear',
-      }
-    ]
+    itemList: []
   },
   mutations: {
     addItemToList(state: State, item: Item) {
@@ -36,10 +19,16 @@ const store: StoreOptions<State> = {
     },
     removeItem(state, id: number) {
       state.itemList.splice(id-1, 1);
+    },
+    setItemList(state, itemList:Item[]){
+      state.itemList = itemList;
     }
   },
   actions: {
-
+    async initData({commit}){
+      const response:AxiosResponse<{itemList:Item[]}> = await AxiosService.instance.get('/sample/todo.json')
+      commit('setItemList', response.data.itemList)
+    }
   },
   getters: {
     allItems(state) {
