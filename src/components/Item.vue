@@ -13,23 +13,23 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import { Component, Prop } from "vue-property-decorator";
+import Vue from 'vue';
+import { Component, Prop } from 'vue-property-decorator';
+import { Item as itemInterface} from '@/store/interface/item.inteface';
 
 @Component({
 })
 export default class Item extends Vue {
-  @Prop() readonly item!:any[];
+  @Prop() public readonly item!: itemInterface;
 
-  removeItem() {
-    console.log(this.item.id);
-    this.$store.commit('removeItem',this.item.id);
+  public removeItem() {
+    this.$store.commit('removeItem', this.item.id);
   }
 
-  changeItemStatus($event:Event) {
-    let status = $event.target.checked == true ? "active" : "clear";
+  public changeItemStatus($event: Event) {
+    const status = ($event.target as HTMLInputElement).checked == true ? 'active' : 'clear';
     console.log(status);
-    this.$store.commit("changeItemStatus", {id:this.item.id, status:status});
+    this.$store.commit('changeItemStatus', {id: this.item.id, status});
   }
 }
 </script>
