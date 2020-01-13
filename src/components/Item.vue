@@ -27,7 +27,7 @@ export default class Item extends Vue {
   }
 
   public changeItemStatus($event: Event) {
-    const status = $event.target.checked == true ? 'active' : 'clear';
+    const status = ($event.target as HTMLInputElement).checked == true ? 'active' : 'clear';
     console.log(status);
     this.$store.commit('changeItemStatus', {id: this.item.id, status});
   }
