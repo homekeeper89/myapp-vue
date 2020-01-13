@@ -29,11 +29,15 @@ export default class Body extends Vue {
 
   public created() {
     this.$store.dispatch('initData');
-    this.watchedItemList = this.allItems;
   }
 
+  @Watch('$store.state.itemList')
+  protected initDataWatcher(){
+    this.watchedItemList = this.allItems;
+  } 
+
   @Watch('$route.params.status')
-  public renderItemListByStatus(status: string|undefined) {
+  protected renderItemListByStatus(status: string|undefined) {
     if (!status) {
       this.watchedItemList = this.allItems;
     } else {
