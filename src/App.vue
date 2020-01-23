@@ -5,17 +5,17 @@
   </div>
 </template>
 <script lang="ts">
-import Vue from 'vue'
+import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
 import Header from '@/components/Header.vue';
 
 @Component({
-  components:{
-    Header
-  }
+  components: {
+    Header,
+  },
 })
-export default class App extends Vue{
-  
+export default class App extends Vue {
+
 }
 </script>
 <style>

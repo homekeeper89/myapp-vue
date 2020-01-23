@@ -45,25 +45,25 @@
   </div>
 </template>
 <script lang="ts">
-import Vue from "vue";
-import { Component } from "vue-property-decorator";
+import Vue from 'vue';
+import { Component } from 'vue-property-decorator';
 import { Item } from '@/store/interface/item.inteface';
 
 @Component
 export default class Header extends Vue {
-  headerTitle: string = "My Todo Project";
-  headerSubTitle: string = "Type what You do";
-  username:string = ""
-  title:string =""
+  public headerTitle: string = 'My Todo Project';
+  public headerSubTitle: string = 'Type what You do';
+  public username: string = '';
+  public title: string = '';
 
-  addItem(){
-    let item = {
-      name:this.username,
-      title:this.title,
-      status:"waiting",
-      id:this.$store.state.itemList.length + 1
-    }
-    this.$store.commit('addItemToList', item)
+  public addItem() {
+    const item = {
+      name: this.username,
+      title: this.title,
+      status: 'waiting',
+      id: this.$store.state.itemList.length + 1,
+    };
+    this.$store.commit('addItemToList', item);
   }
 }
 </script>

@@ -4,39 +4,44 @@
   </div>
 </template>
 <script lang="ts">
-import Vue from 'vue'
+import Vue from 'vue';
 import {Component, Watch} from 'vue-property-decorator';
-import Item from '@/components/Item.vue'
+import Item from '@/components/Item.vue';
 import {mapGetters} from 'vuex';
 
 @Component({
-  components:{
-    Item
+  components: {
+    Item,
   },
-  computed:{
+  computed: {
     ...mapGetters([
       'allItems',
-      'itemsOnStatus'
-    ]
-    )
-  }
+      'itemsOnStatus',
+    ],
+    ),
+  },
 })
-export default class Body extends Vue{
+export default class Body extends Vue {
 
-  watchedItemList:any[]=[]
+  public watchedItemList: any[] = [];
+  allItems!:any[];
+  itemsOnStatus!:any[];
 
-  created(){
+  public created() {
     this.$store.dispatch('initData');
-    this.watchedItemList = this.allItems;
   }
 
-  @Watch("$route.params.status")
-  renderItemListByStatus(status:string|undefined){
-    if(!status){
+  @Watch('$store.state.itemList')
+  protected initDataWatcher(){
+    this.watchedItemList = this.allItems;
+  } 
+
+  @Watch('$route.params.status')
+  protected renderItemListByStatus(status: string|undefined) {
+    if (!status) {
       this.watchedItemList = this.allItems;
-    }else{
+    } else {
       this.watchedItemList = this.itemsOnStatus(status);
-      console.log(this.watchedItemList)
     }
   }
 
